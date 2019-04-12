@@ -66,3 +66,29 @@ The results are:
 > Job 5 finished...
 
 > Job 6 finished...
+
+# The chan in Go
+
+```
+import parago
+import time
+from queue import Queue
+
+def producer(out_q):
+    time.sleep(5)
+    out_q.put('hello')
+
+def consumer(in_q):
+    h = in_q.get()
+    print(h + ' world!')
+    in_q.task_done()
+    
+q = Queue()
+parago.go(producer, q)
+parago.go(consumer, q)
+
+q.join()
+```
+The result is
+
+> hello world!
