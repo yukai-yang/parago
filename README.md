@@ -1,5 +1,5 @@
 # parago
-implementing the Go routing and R apply like parallel computation
+implementing the Go routine and R apply like parallel computation
 
 # How to install
 
