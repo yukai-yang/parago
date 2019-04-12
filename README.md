@@ -1,6 +1,14 @@
 # parago
 implementing the Go routing and R apply like parallel computation
 
+# How to install
+
+Run
+```
+pip install git+https://github.com/yukai-yang/parago
+```
+provided that pip has been installed beforehand.
+
 # Go routine like parallel
 
 ```
