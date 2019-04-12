@@ -23,7 +23,7 @@ def sleep(sec):
     time.sleep(real)
     print(f'Job {real} finished...')
 
-# we need some global variable to check if function to be forked can find it
+# we need some global variable to check if the function to be forked can find it
 offset = 1
 
 # here we go!
