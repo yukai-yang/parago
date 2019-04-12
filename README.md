@@ -29,9 +29,6 @@ offset = 1
 # here we go!
 parago.go(sleep, 2)
 parago.go(sleep, 1)
-
-# and we apply!
-parago.map(sleep, range(5,1,-1))
 ```
 
 The results are:
