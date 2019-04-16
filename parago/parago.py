@@ -7,43 +7,38 @@
 import threading
 
 
-def go(func, *args):
+def go(func, *args, **kwargs):
     """Function achieving the concurrency feature like Go language""" 
 
     class GoThread(threading.Thread): 
 
-        def __init__(self, *args):
-            threading.Thread.__init__(self)
-            self.args = args
-
         def run(self):
             try:
-                func(*self.args)
+                func(*args, **kwargs)
             except:
                 print("Something went wrong with the function call...")
                 raise
 
-    gothread = GoThread(*args)
+    gothread = GoThread()
     gothread.start()
 
 
-def map(func, iterable, *args):
+def map(func, iterable, *args, **kwargs):
     """Function achieving the parallel version of the map function"""
 
     class MapThread(threading.Thread):
 
-        def __init__(self, val, *args):
+        def __init__(self, val):
             threading.Thread.__init__(self)
             self.val = val
-            self.args = args
 
         def run(self):
             try:
-                func(self.val, *self.args)
+                func(self.val, *args, **kwargs)
             except:
                 print("Something went wrong with the function call...")
                 raise
 
     for val in iterable:
-        mapthread = MapThread(val, *args)
+        mapthread = MapThread(val)
         mapthread.start()
