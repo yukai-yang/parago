@@ -4,9 +4,9 @@
 from setuptools import setup
 
 setup(name='parago',
-      version='0.2',
+      version='1.0',
       description='implementing the Go routing and R apply like parallel computation',
-      long_description='The package implements two different kinds of parallel computation. One mimics the Go routine like concurrent computation, and the other the R apply like parallel computation. They are featured in the way that the user of the package does not need to know how many cores are deployed and gets the jobs done.',
+      long_description='The package implements two different kinds of parallel computation. One immitates the Go routine like concurrent computation, and the other the R apply like parallel computation. They are featured in the way that the user of the package does not need to know how many cores are deployed and gets the jobs done.',
       classifiers=[
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',

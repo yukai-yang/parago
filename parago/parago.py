@@ -5,40 +5,23 @@
 # by Yukai Yang
 
 import threading
+from functools import wraps
 
+def go_thread(func):
+    """a decorator achieving the concurrency feature like Go language"""
 
-def go(func, *args, **kwargs):
-    """Function achieving the concurrency feature like Go language""" 
+    @wraps(func)
+    def decorated_func(*args, **kwargs):
+        thread = threading.Thread(target=func, args=args, kwargs=kwargs)
+        thread.start()
+        return
 
-    class GoThread(threading.Thread): 
-
-        def run(self):
-            try:
-                func(*args, **kwargs)
-            except:
-                print("Something went wrong with the function call...")
-                raise
-
-    gothread = GoThread()
-    gothread.start()
+    return decorated_func
 
 
 def map(func, iterable, *args, **kwargs):
-    """Function achieving the parallel version of the map function"""
-
-    class MapThread(threading.Thread):
-
-        def __init__(self, val):
-            threading.Thread.__init__(self)
-            self.val = val
-
-        def run(self):
-            try:
-                func(self.val, *args, **kwargs)
-            except:
-                print("Something went wrong with the function call...")
-                raise
+    """a function achieving the parallel version of the map function"""
 
     for val in iterable:
-        mapthread = MapThread(val)
-        mapthread.start()
+        thread = threading.Thread(target=func, args=(val,)+args, kwargs=kwargs)
+        thread.start()
